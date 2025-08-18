@@ -51,11 +51,13 @@
 <style lang="scss">
 	section.cover {
 		position: relative;
-		background-image: url('/src/lib/assets/P1.jpeg');
+		background-image: url('/src/lib/assets/P1.webp');
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
 		filter: brightness(1.1) contrast(1.05) saturate(0.9) sepia(0.1);
+		will-change: transform;
+		transform: translateZ(0);
 	}
 	.confetti-area {
 		position: absolute;
