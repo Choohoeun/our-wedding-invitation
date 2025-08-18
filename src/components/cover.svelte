@@ -31,9 +31,9 @@
 	</div>
 
 	<div class="names-kr-box">
-		<span class="names kr">박건희</span>
+		<span class="names kr">000</span>
 		<span class="names kr">그리고</span>
-		<span class="names kr">피아영</span>
+		<span class="names kr">000</span>
 	</div>
 
 	<div class="cover-title-container">
@@ -51,10 +51,11 @@
 <style lang="scss">
 	section.cover {
 		position: relative;
-		background-image: url('/src/lib/assets/cover.webp');
+		background-image: url('/src/lib/assets/P1.jpeg');
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
+		filter: brightness(1.1) contrast(1.05) saturate(0.9) sepia(0.1);
 	}
 	.confetti-area {
 		position: absolute;

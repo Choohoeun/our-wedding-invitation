@@ -36,9 +36,7 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-{#if localeLoaded}
-	{@render children()}
-{/if}
+{@render children()}
 
 <style lang="scss">
 </style>

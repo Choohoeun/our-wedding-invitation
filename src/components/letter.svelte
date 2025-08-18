@@ -1,8 +1,6 @@
 <script lang="ts">
-	import letterBottom from '$lib/assets/letter-bottom.webp';
 	import { _ } from 'svelte-i18n';
 	import { localeStore } from '../i18n.svelte';
-	import letterDeco from '$lib/assets/letter-deco.svg';
 
 	const nameDivider = `
     <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,36 +10,30 @@
 
 <section class="letter">
 	<div class="header">
-		<img class="header-deco" src={letterDeco} alt="letter header deco" />
-		<h2 class="title {localeStore.locale}">{$_('letter.date')}</h2>
-		<p class="sub-title {localeStore.locale}">{$_('letter.sub_title')}</p>
+		<div class="invitation-text">INVITATION</div>
+		<h2 class="title {localeStore.locale}">두 사람의 결혼식에 초대합니다</h2>
 	</div>
 
 	<div class="letter-container">
-		<p class="letter {localeStore.locale}">{$_('letter.letter_content')}</p>
+		<div class="letter-content {localeStore.locale}">
+			<p>새 계명을 너희에게 주노니 서로 사랑하라</p>
+			<p>내가 너희를 사랑한 것 같이</p>
+			<p>너희도 서로 사랑하라</p>
+			<p>하나님의 신실한 계획 아래</p>
+			<p>있는 그대로 사랑할 사람을 만나</p>
+			<p>믿음으로 한 가정을 이루고자 합니다.</p>
+			<p>저희가 하나되는 자리에 오셔서</p>
+			<p>따뜻한 마음으로 축복해주세요.</p>
+		</div>
 
-		{#if localeStore.isEn}
-			<div class="letter-signature">
-				<p class="en">with love</p>
-				<p class="en">Emily & Anthony</p>
-			</div>
-		{:else}
-			<div class="family-description kr">
-				<p>
-					박주용<span class="name-divider">{@html nameDivider}</span> 김명숙
-					<span class="son">의 아들</span>박건희
-				</p>
-				<p>
-					피세광<span class="name-divider">{@html nameDivider}</span> 윤은주<span class="daughter"
-						>의 딸</span
-					>피아영
-				</p>
-			</div>
-		{/if}
+		<div class="divider"></div>
+
+		<div class="family-description kr">
+			<p>백현철 · 김동자 <span class="relationship">의 아들</span><span class="name-gap"></span>백현우</p>
+			<p>홍수철 · 박순자 <span class="relationship">의 딸</span><span class="name-gap"></span>홍해인</p>
+		</div>
 	</div>
 </section>
-
-<img class="letter-bottom" src={letterBottom} alt="letter bottom" />
 
 <style lang="scss">
 	section.letter {
@@ -55,14 +47,24 @@
 		margin-bottom: 2em;
 	}
 
-	img.header-deco {
-		width: 12em;
+	.invitation-text {
+		font-size: 0.9em;
+		color: #8b7355;
+		font-weight: 400;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		font-family: 'Helvetica Neue', 'Arial', sans-serif;
 		margin-bottom: 0.8em;
 	}
 
 	.title {
 		color: $primary-color;
-		letter-spacing: 1px;
+		font-size: 1.6em;
+		font-weight: 500;
+		font-family: 'Noto Serif KR', serif;
+		letter-spacing: 0.5px;
+		text-align: center;
+		line-height: 1.4;
 
 		&.kr {
 			@extend .title-font-kr;
@@ -72,19 +74,6 @@
 		&.en {
 			@extend .title-font-en;
 			margin-bottom: 0.2em;
-		}
-	}
-
-	.sub-title {
-		color: $primary-color;
-		&.kr {
-			font-weight: 500;
-			font-size: 1rem;
-		}
-
-		&.en {
-			font-size: 1.3rem;
-			font-weight: 600;
 		}
 	}
 
@@ -111,27 +100,48 @@
 
 	.family-description {
 		margin-top: 2em;
+		text-align: center;
+		
 		p {
 			color: $font-color-default;
-			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			column-gap: 12px;
-			margin-bottom: 20px;
-			align-items: center;
+			margin-bottom: 0.5em;
+			font-size: 0.9rem;
+			line-height: 2.2;
+		}
+		
+		.relationship {
+			color: #d4a5a5;
+		}
+		
+		.name-gap {
+			display: inline-block;
+			width: 0.5em;
+		}
+	}
 
-			.name-divider {
-				display: flex;
-				justify-content: center;
-				align-items: center;
+	.letter-content {
+		text-align: center;
+		margin-bottom: 2em;
+		
+		p {
+			margin-bottom: 0.8em;
+			line-height: 1.8;
+			
+			&.kr {
+				line-height: 2.3em;
+				font-size: 0.9rem;
 			}
-
-			.son,
-			.daughter {
-				display: flex;
-				justify-content: center;
-				font-size: 12px;
-				color: $primary-color;
+			&.en {
+				line-height: 1.8em;
+				font-size: 1.2rem;
 			}
 		}
+	}
+
+	.divider {
+		width: 1px;
+		height: 40px;
+		background-color: #ddd;
+		margin: 2em auto;
 	}
 </style>

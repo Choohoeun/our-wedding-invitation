@@ -1,13 +1,10 @@
 <script lang="ts">
-	import locationTopWave from '$lib/assets/location-top-wave.svg';
-
 	import locationDeco from '$lib/assets/location-deco.svg';
 	import { _ } from 'svelte-i18n';
 	import { localeStore } from '../i18n.svelte';
 	import { Clipboard, Github } from '@lucide/svelte';
-	import { PUBLIC_GOOGLE_MAPS_API_KEY } from '$env/static/public';
-
-	const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=${PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent('108 Lamplighter, Irvine, CA 92620')}`;
+	// For development, use a placeholder or remove the API key requirement
+	const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=placeholder&q=${encodeURIComponent('108 Lamplighter, Irvine, CA 92620')}`;
 
 	function copyAddress() {
 		navigator.clipboard
@@ -17,7 +14,6 @@
 	}
 </script>
 
-<img src={locationTopWave} class="location-top-wave" alt="" />
 <section class="location">
 	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
 	<p class="venue en">Woodbury Community Association</p>
@@ -36,19 +32,11 @@
 			src={googleMapsUrl}
 		></iframe>
 	</div>
-	<p class="signature en">made with ♡ by Emily & Anthony</p>
-	<a class="github-icon" href="https://github.com/anthopark/our-wedding-invitation" target="_blank"
-		><Github size="1.1em" strokeWidth={1} /></a
-	>
+	<p class="signature en">made with ♡ Hoeun</p>
 	<img class="location-deco" src={locationDeco} alt="" />
 </section>
 
 <style lang="scss">
-	img.location-top-wave {
-		max-width: $content-max-width;
-		margin: auto;
-	}
-
 	section.location {
 		position: relative;
 		display: flex;
@@ -117,11 +105,6 @@
 
 	p.signature {
 		font-size: 1rem;
-	}
-	.github-icon {
-		margin-top: 0.2em;
-		color: $font-color-default;
-		cursor: pointer;
 	}
 
 	img.location-deco {
