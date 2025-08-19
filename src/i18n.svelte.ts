@@ -3,10 +3,15 @@ import { getLocaleFromQueryString, init, isLoading, locale, register } from 'sve
 register('kr', () => import('./locales/kr.json'));
 register('en', () => import('./locales/en.json'));
 
+const resolvedInitial = getLocaleFromQueryString('lang') || 'kr';
+
 init({
 	fallbackLocale: 'kr',
-	initialLocale: getLocaleFromQueryString('lang')
+	initialLocale: resolvedInitial
 });
+
+// Ensure locale is set synchronously to avoid "Cannot format" errors
+locale.set(resolvedInitial);
 
 class LocaleStore {
 	isLoading = $state(true);
